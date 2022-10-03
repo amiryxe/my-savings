@@ -19,9 +19,6 @@ savings = {}
 
 print("\n")
 print("Hi! Enter your saving list, I will calculate total for you")
-print(
-    "As long as the word 'end' is not entered for name, receiving information continues"
-)
 print("\n")
 
 newStatus = ""
@@ -31,7 +28,7 @@ my_table.field_names = ["No.", "Name", "Value"]
 
 count = 0
 
-while newStatus != 'n':
+while newStatus != 'end':
     inputName = input("+   Saving name: ")
     inputValue = int(input("+   Saving value: "))
 
@@ -39,11 +36,13 @@ while newStatus != 'n':
 
     my_table.add_row([count, inputName, inputValue])
 
-    newStatus = input("\nEnter New Item? (y/n): ")
+    newStatus = input(
+        "\nPress enter key to add new item or type (end) word to calc result: "
+    )
     savings[inputName] = inputValue
     print("\n")
 
 values = savings.values()
 
 print(my_table)
-print("SAVINGS RESULT: ", intWithCommas(sum(values)))
+print("SAVINGS RESULT: ", intWithCommas(sum(values)) + "\n")
